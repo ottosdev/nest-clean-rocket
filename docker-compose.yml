@@ -10,6 +10,6 @@ services:
       POSTGRES_USER: nest 
       POSTGRES_PASSWORD: nest
       POSTGRES_DB: nest-clean
-      PGDATA: /data/postgres
+      PGDATA: /data/postgres # Caso o banco seja apagado salve os dados nessa pasta
     volumes: 
-      - ./data/pg:/data/postgres
+      - ./data/pg:/data/postgres # Caso o banco seja apagado salve os dados nessa pasta
