@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
     "name": "Otto Souza",
-    "email": "otto@gmail.com",
+    "email": "otto3@gmail.com",
     "password": "12345"
 }
 
@@ -19,7 +19,7 @@ POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-    "email": "otto@gmail.com",
+    "email": "otto3@gmail.com",
     "password": "12345"
 }
 
@@ -32,6 +32,17 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "title": "Nova pergufdsfnt3",
+    "title": "Nova perguta 2",
     "content": "Conteudo dafds pergunta3"
 }
+
+###
+
+# @name fetch_recent_questions
+
+GET  {{baseUrl}}/questions?page=1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+

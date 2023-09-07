@@ -16,7 +16,7 @@ const authenticateBodySchema = z.object({
   password: z.string(),
 });
 
-type CreateAccountBodySchema = z.infer<typeof authenticateBodySchema>;
+type AuthenticateBodySchema = z.infer<typeof authenticateBodySchema>;
 
 @Controller("/sessions")
 export class AuthenticateController {
@@ -27,7 +27,7 @@ export class AuthenticateController {
 
   @Post()
   @UsePipes(new ZodValidationPipe(authenticateBodySchema))
-  async handle(@Body() body: CreateAccountBodySchema) {
+  async handle(@Body() body: AuthenticateBodySchema) {
     const { email, password } = body;
 
     const user = await this.prisma.user.findUnique({
@@ -41,7 +41,7 @@ export class AuthenticateController {
     }
     const isPassword = await compare(password, user.password);
 
-    if (isPassword) {
+    if (!isPassword) {
       throw new UnauthorizedException("User credentials do not match.");
     }
 
